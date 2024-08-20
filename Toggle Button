@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Button</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container" id="container">
+        <p id="text">Short paragraphs are easier to read and understand. Writing experts recommend paragraphs of no more than 150 words in three to eight sentences.</p>
+        <button id="toggleButton" class="initial">Change State</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color:gray;
+}
+
+.container {
+  padding: 20px;
+  width: 100vh;
+  height: 50vh;
+  border: 2px solid black;
+  background-color: aqua;
+  text-align: center;
+}
+
+#toggleButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 50px;
+  background-color:moccasin;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('toggleButton');
+    const text = document.getElementById('text');
+    const container = document.getElementById('container');
+
+    button.addEventListener('click', () => {
+        const isInitialState = button.classList.contains('initial');
+
+        if (isInitialState) {
+            button.classList.remove('initial');
+            button.classList.add('changed');
+            button.textContent = 'Reset State';
+            text.textContent = 'Paragraphs should never be longer than 250 words. Vary the lengths of your paragraphs to make them more interesting.ere are some more techniques you can adopt from creative writing to improve your essays.';
+            container.style.backgroundColor = 'pink';
+        } else {
+            button.classList.remove('changed');
+            button.classList.add('initial');
+            button.textContent = 'Change State';
+            text.textContent = 'Short paragraphs are easier to read and understand. Writing experts recommend paragraphs of no more than 150 words in three to eight sentences.';
+            container.style.backgroundColor = 'aqua';
+        }
+    });
+});
